@@ -15,3 +15,25 @@ function getComputerChoice() {
     }
 
 }
+
+// Gets choice from user
+function getHumanChoice() {
+    // Array for valid choices in game
+    let validChoices = ['rock', 'paper', 'scissors'];
+
+    let userChoice;
+    let promptUser = true;
+
+    // Prompts user until valid value is given
+    while ( promptUser ) {
+        userChoice = prompt(`Do you pick 'rock', 'paper', or 'scissors'?`);
+
+        if ( validChoices.includes(userChoice.toLowerCase()) ) {
+            promptUser = false;
+        }
+    }
+
+    return userChoice;
+}
+
+console.log(getHumanChoice());
