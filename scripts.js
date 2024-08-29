@@ -23,10 +23,17 @@ function getHumanChoice() {
 
     let userChoice;
     let promptUser = true;
+    let firstPrompt = true;
 
     // Prompts user until valid value is given
     while ( promptUser ) {
-        userChoice = prompt(`Do you pick 'rock', 'paper', or 'scissors'?`);
+
+        if ( firstPrompt ) {
+            userChoice = prompt(`Do you pick 'rock', 'paper', or 'scissors'?`);
+            firstPrompt = false;
+        } else {
+            userChoice = prompt(`You didn't enter a valid response. Please choose between 'rock', 'paper', and 'scissors'`);
+        }
 
         if ( validChoices.includes(userChoice.toLowerCase()) ) {
             promptUser = false;
@@ -36,4 +43,4 @@ function getHumanChoice() {
     return userChoice;
 }
 
-console.log(getHumanChoice());
+getHumanChoice();
