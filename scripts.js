@@ -5,7 +5,13 @@ function getComputerChoice() {
 
     // Less than or equal to 33 means rock
     if ( randomNumber <= 33 ) {
-        return "rock"
+        return "rock";
+    // Greater than 33 or less than or equal to 66 means paper
+    } else if ( randomNumber > 33 && randomNumber <= 66) {
+        return "paper";
+    // Anything greater than 66 is scissors
+    } else {
+        return "scissors";
     }
 
 }
