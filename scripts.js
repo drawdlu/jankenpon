@@ -73,6 +73,10 @@ function playRound(humanChoice, computerChoice) {
     }
 
     displayScore();
+
+    if (humanScore === 5 || computerScore === 5) {
+        displayGameResults();
+    }
 }
 
 function printResult(message) {
@@ -93,7 +97,6 @@ function displayScore() {
     })
 }
 
-
 function recordButtons() {
     const buttons = document.querySelectorAll('.choice');
 
@@ -105,6 +108,21 @@ function recordButtons() {
             playRound(playerSelection, getComputerChoice())
         })
     });
+}
+
+function displayGameResults() {
+    const resultsDiv = document.querySelector('.results');
+    const para = document.createElement('p');
+    para.style.fontSize = '2em';
+
+    if (humanScore > computerScore) {
+        para.textContent = 'Congratulations! You have won the game.';
+    } else {
+        para.textContent = 'The computer won the game :(';
+    }
+
+    resultsDiv.appendChild(para);
+    
 }
 
 recordButtons();
