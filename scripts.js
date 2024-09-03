@@ -21,8 +21,9 @@ let humanScore = 0;
 let computerScore = 0;
 
 // Play a round of rock, paper, scissors
-function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
+function playRound(event) {
+    humanChoice = event.target.textContent.toLowerCase();
+    computerChoice = getComputerChoice();
 
     switch (computerChoice) {
         case 'rock':
@@ -75,7 +76,7 @@ function playRound(humanChoice, computerChoice) {
     displayScore();
 
     if (humanScore === 5 || computerScore === 5) {
-        displayGameResults();
+        displayWinner();
     }
 }
 
@@ -99,18 +100,21 @@ function displayScore() {
 
 function recordButtons() {
     const buttons = document.querySelectorAll('.choice');
-
-    let playerSelection;
     
     buttons.forEach( (button) => {
-        button.addEventListener('click', () => {
-            playerSelection = button.textContent;
-            playRound(playerSelection, getComputerChoice())
-        })
+        button.addEventListener('click', playRound)
     });
 }
 
-function displayGameResults() {
+function stopButtonEvents() {
+    const buttons = document.querySelectorAll('.choice');
+    
+    buttons.forEach( (button) => {
+        button.removeEventListener('click', playRound);
+    });
+}
+
+function displayWinner() {
     const resultsDiv = document.querySelector('.results');
     const para = document.createElement('p');
     para.style.fontSize = '2em';
@@ -122,7 +126,7 @@ function displayGameResults() {
     }
 
     resultsDiv.appendChild(para);
-    
+    stopButtonEvents();
 }
 
 recordButtons();
