@@ -44,8 +44,8 @@ function getHumanChoice() {
 }
 
 // Play a 5 round game
-function playGame() {
-    // Play a round of rock, paper, scissors
+// function playGame() {
+//     // Play a round of rock, paper, scissors
     function playRound(humanChoice, computerChoice) {
         humanChoice = humanChoice.toLowerCase();
 
@@ -85,23 +85,23 @@ function playGame() {
         }
     }
 
-    // track scores
-    let humanScore = 0;
-    let computerScore = 0;
+//     // track scores
+//     let humanScore = 0;
+//     let computerScore = 0;
 
-    // Run playRound 5 times
-    for (i = 0; i < 5; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
-    }
+//     // Run playRound 5 times
+//     for (i = 0; i < 5; i++) {
+//         playRound(getHumanChoice(), getComputerChoice());
+//     }
 
-    // Announce winner
-    if (humanScore > computerScore) {
-        console.log("You won the game!");
-    } else if (computerScore > humanScore) {
-        console.log("You lost the game.");
-    } else {
-        console.log("It's a draw! You both won.")
-    }
-}
+//     // Announce winner
+//     if (humanScore > computerScore) {
+//         console.log("You won the game!");
+//     } else if (computerScore > humanScore) {
+//         console.log("You lost the game.");
+//     } else {
+//         console.log("It's a draw! You both won.")
+//     }
+// }
 
-playGame();
+// playGame();
