@@ -105,3 +105,13 @@ function getHumanChoice() {
 // }
 
 // playGame();
+
+const buttons = document.querySelectorAll('.choice');
+
+let playerSelection;
+
+buttons.forEach( (button) => {
+    button.addEventListener('click', () => {
+        playerSelection = button.textContent;
+    })
+});
