@@ -31,10 +31,21 @@ button {
 }
 
 .results {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 p {
     padding: 8px;
+    text-align: center;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.scores {
+    padding: 16px;
     text-align: center;
 }

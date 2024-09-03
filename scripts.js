@@ -58,6 +58,8 @@ function playRound(humanChoice, computerChoice) {
             printResult("It's a Draw! You both played scissors.");
         }
     }
+
+    displayScore();
 }
 
 function printResult(message) {
@@ -67,14 +69,29 @@ function printResult(message) {
     resultsDiv.appendChild(para);
 }
 
-
-const buttons = document.querySelectorAll('.choice');
-
-let playerSelection;
-
-buttons.forEach( (button) => {
-    button.addEventListener('click', () => {
-        playerSelection = button.textContent;
-        playRound(playerSelection, getComputerChoice())
+function displayScore() {
+    const scoreDiv = document.querySelectorAll('.score');
+    scoreDiv.forEach( (player) => {
+        if (player.getAttribute('data-player') === 'human') {
+            player.textContent = player.textContent.slice(0, -1) + humanScore;
+        } else {
+            player.textContent = player.textContent.slice(0, -1) + computerScore;
+        }
     })
-});
+}
+
+
+function recordButtons() {
+    const buttons = document.querySelectorAll('.choice');
+
+    let playerSelection;
+    
+    buttons.forEach( (button) => {
+        button.addEventListener('click', () => {
+            playerSelection = button.textContent;
+            playRound(playerSelection, getComputerChoice())
+        })
+    });
+}
+
+recordButtons();
