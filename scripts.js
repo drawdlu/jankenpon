@@ -24,39 +24,52 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
 
-    // Determine round winner if computer plays rock
-    if (computerChoice === 'rock') {
-        if (humanChoice === 'scissors') {
-            printResult("You lose! Scissors loses to rock.");
-            computerScore++;
-        } else if (humanChoice === 'paper') {
-            printResult("You win! Paper beats rock.");
-            humanScore++;
-        } else {
-            printResult("It's a Draw! Both played rock");
-        }
-    // Determine round winner if computer plays paper
-    } else if (computerChoice === 'paper') {
-        if (humanChoice === 'rock') {
-            printResult("You lose! Rock loses to paper.");
-            computerScore++;
-        } else if (humanChoice === 'scissors') {
-            printResult("You win! Scissors beats paper.");
-            humanScore++;
-        } else {
-            printResult("It's a Draw! Both played paper.");
-        }
-    // Determine round winner if computer plays scissors
-    } else {
-        if (humanChoice === 'rock') {
-            printResult("You win! Rock beats scissors.");
-            humanScore++;
-        } else if (humanChoice === 'paper') {
-            printResult("You lose! Paper loses to scissors.");
-            computerScore++;
-        } else {
-            printResult("It's a Draw! You both played scissors.");
-        }
+    switch (computerChoice) {
+        case 'rock':
+            switch (humanChoice) {
+                case 'rock':
+                    printResult("It's a Draw! Both played rock");
+                    break;
+                case 'paper': 
+                    printResult("You win! Paper beats rock.");
+                    humanScore++;
+                    break;
+                case 'scissors':
+                    printResult("You lose! Scissors loses to rock.");
+                    computerScore++;    
+                    break;
+            }
+            break;
+        case 'paper':
+            switch (humanChoice) {
+                case 'rock': 
+                    printResult("You lose! Rock loses to paper.");
+                    computerScore++;
+                    break;
+                case 'paper':
+                    printResult("It's a Draw! Both played paper.");
+                    break;
+                case 'scissors': 
+                    printResult("You win! Scissors beats paper.");
+                    humanScore++;
+                    break;
+            }
+            break;
+        case 'scissors':
+            switch (humanChoice) {
+                case 'rock': 
+                    printResult("You win! Rock beats scissors.");
+                    humanScore++;
+                    break;
+                case 'paper': 
+                    printResult("You lose! Paper loses to scissors.");
+                    computerScore++;
+                    break;
+                case 'scissors':
+                    printResult("It's a Draw! You both played scissors.");
+                    break;
+            }
+            break;
     }
 
     displayScore();
